@@ -149,6 +149,30 @@ class NoteScreen extends React.Component {
   }
 }
 
+class ProfileScreen extends React.Component {
+  render() {
+    return (
+      <Container style={base.whiteContainer}>
+        <Content>
+          <Text style={base.text}> Profile Dashboard: </Text>
+        </Content>
+      </Container>
+    )
+  }
+}
+
+class SettingScreen extends React.Component {
+  render() {
+    return (
+      <Container style={base.whiteContainer}>
+        <Content>
+          <Text style={base.text}> Settings: </Text>
+        </Content>
+      </Container>
+    )
+  }
+}
+
 const Parents = ({ navigation }) => {
   return (
     <View style={ profileStyles.profiles }>
@@ -254,6 +278,7 @@ const DashboardNavigator = createBottomTabNavigator(
       labelPosition: 'below-icon',
       keyboardHidesTabBar: true
     },
+
     // Match header to active tab
     navigationOptions: ({ navigation }) => {
       const {routeName} = navigation.state.routes[navigation.state.index];
@@ -286,10 +311,55 @@ const HomeStackNavigator = createStackNavigator(
   }
 );
 
+const ProfileStackNavigator = createStackNavigator(
+  {
+    ProfileScreen
+  },
+  {
+    defaultNavigationOptions:({ navigation }) => {
+      return {
+        headerLeft:(
+          <Icon 
+            style={base.drawer}
+            name="menu"
+            size={30} 
+            onPress={() => navigation.openDrawer()}
+          />
+        ),
+        headerTitle: 'Profile'
+      }
+    }
+  }
+);
+
+
+const SettingStackNavigator = createStackNavigator(
+  {
+    SettingScreen
+  },
+  {
+    defaultNavigationOptions:({ navigation }) => {
+      return {
+        headerLeft:(
+          <Icon 
+            style={base.drawer}
+            name="menu"
+            size={30} 
+            onPress={() => navigation.openDrawer()}
+          />
+        ),
+        headerTitle: 'Settings'
+      }
+    }
+  }
+);
+
 // Drawer menu configs (make available from Home)
 const AppDrawerNavigator = createDrawerNavigator(
   {
-    Home: { screen: HomeStackNavigator }
+    Family: { screen: HomeStackNavigator },
+    Profile: { screen: ProfileStackNavigator },
+    Settings: { screen: SettingStackNavigator }
   },
   {
     drawerType: 'slide',
