@@ -97,7 +97,7 @@ const profileStyles = StyleSheet.create({
 class LoginScreen extends React.Component {
   render() {
     return (
-      <ImageBackground source={require('./assets/base/login.png')} style={login.container}>
+      <ImageBackground source={require('./app/assets/images/base/login.png')} style={login.container}>
         <TouchableOpacity 
           style={base.rowStyle}
           onPress={ () => this.props.navigation.navigate('Home')}
@@ -155,7 +155,7 @@ const Parents = ({ navigation }) => {
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={profileStyles.parents}
-          source={require('./assets/profiles/parent.png')}
+          source={require('./app/assets/images/profiles/parent.png')}
         />
         <Text style={profileStyles.text}> Parents </Text>
       </TouchableOpacity> 
@@ -169,21 +169,21 @@ const Kids = ({ navigation }) => {
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={profileStyles.child}
-          source={require('./assets/profiles/infant.png')}
+          source={require('./app/assets/images/profiles/infant.png')}
         />
         <Text style={profileStyles.text}> Infant </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={profileStyles.child}
-          source={require('./assets/profiles/toddler.png')}
+          source={require('./app/assets/images/profiles/toddler.png')}
         />
         <Text style={profileStyles.text}> Toddler </Text>
       </TouchableOpacity>        
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={profileStyles.child}
-          source={require('./assets/profiles/schoolage.png')}
+          source={require('./app/assets/images/profiles/schoolage.png')}
         />
         <Text style={profileStyles.text}> School Age </Text>
       </TouchableOpacity>  
