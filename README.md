@@ -1,6 +1,6 @@
-# home-app
+# housie
 
-This React Native ios application is a management tool for parents of young kids.
+This React Native iOS application is a family planning management tool for parents.
 
 ## Available development commands:
 ```bash

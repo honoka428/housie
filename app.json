@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "My Home",
-    "slug": "MyHomeApp",
+    "name": "Housie",
+    "slug": "Housie",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
