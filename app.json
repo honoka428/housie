@@ -5,14 +5,12 @@
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
-      "ios",
-      "android",
-      "web"
+      "ios"
     ],
     "version": "1.0.0",
     "orientation": "default",
     "splash": {
-      "image": "./app/assets/images/base/splash.png",
+      "image": "./src/assets/images/base/splash.png",
       "resizeMode": "cover"
     },
     "updates": {

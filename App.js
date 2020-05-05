@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, Component } from 'react-native';
-import { Container, Header, Content, Icon } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Icon } from 'native-base';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-import LoginScreen from './app/components/login';
-import ProfileScreen from './app/components/profile';
-import SettingScreen from './app/components/settings'
-import DashboardNavigator from './app/components/dashboardNav';
+import LoginScreen from './src/components/login';
+import ProfileScreen from './src/components/profile';
+import SettingScreen from './src/components/settings'
+import DashboardNavigator from './src/components/dashboardNav';
 
 // Navigation within 'Home'
 const HomeStackNavigator = createStackNavigator(
