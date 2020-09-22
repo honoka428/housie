@@ -5,7 +5,7 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-import LoginScreen from './src/components/login';
+import LandingScreen from './src/components/landing';
 import ProfileScreen from './src/components/profile';
 import SettingScreen from './src/components/settings'
 import DashboardNavigator from './src/components/dashboardNav';
@@ -96,7 +96,7 @@ const AppDrawerNavigator = createDrawerNavigator(
 
 // Navigation for before vs. after authentication
 const AppSwitchNavigator = createSwitchNavigator({
-  Login: { screen: LoginScreen},
+  Landing: { screen: LandingScreen},
   Home: { screen: AppDrawerNavigator}
 });
 
