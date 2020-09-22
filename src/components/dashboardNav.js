@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Component } from 'react-native';
 import { Icon } from 'native-base';
+
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import HomeScreen from './home';
@@ -15,9 +15,9 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="restaurant"
-            style={styles.icon}
+            name="ios-add"  
             size={24}
+            style={{color: tintColor}}
           />
         )
       })
@@ -27,9 +27,9 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="home"
-            style={styles.icon}
+            name="heart"  
             size={24}
+            style={{color: tintColor}}
           />
         )
       })
@@ -38,10 +38,10 @@ const DashboardNavigator = createBottomTabNavigator(
       screen: NoteScreen,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
-          <Icon
-            name="create"
-            style={styles.icon}
-            size={24}
+          <Icon 
+            name="home"  
+            style={{color: tintColor}}
+            size={25}
           />
         )
       })      
@@ -49,11 +49,9 @@ const DashboardNavigator = createBottomTabNavigator(
   }, 
   {
     tabBarOptions: {
-      showLabel: false,      
-      activeTintColor: 'white',
-      activeBackgroundColor: '#FC9A26',
-      inactiveTintColor: 'white',
-      inactiveBackgroundColor: '#FFAC4A',
+      showLabel: false,     
+      activeTintColor: '#FAA465',
+      inactiveTintColor: '#DADADA',
       labelStyle: {
         fontSize: 12,
         fontWeight: '300'
@@ -63,11 +61,5 @@ const DashboardNavigator = createBottomTabNavigator(
     }
   },
 );
-
-const styles = StyleSheet.create({
-  icon: {
-    color: 'white'
-  }
-})
 
 export default DashboardNavigator
