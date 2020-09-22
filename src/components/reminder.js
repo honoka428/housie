@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { Container, Content } from 'native-base';
 
-class MealScreen extends React.Component {
+class NewReminderScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
         <Content>
-          <Text style={styles.text}> Meals: </Text>
+          <Text style={styles.text}> Add New Reminder: </Text>
         </Content>
       </Container>
     )
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default MealScreen;
+export default NewReminderScreen;

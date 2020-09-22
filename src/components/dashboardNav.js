@@ -4,18 +4,18 @@ import { Icon } from 'native-base';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import HomeScreen from './home';
-import MealScreen from './meals';
+import NewReminderScreen from './reminder';
 import NoteScreen from './notes';
 
 // Footer tabs navigation config 
 const DashboardNavigator = createBottomTabNavigator(
   {
-    Meals: { 
-      screen: MealScreen,
+    Reminders: { 
+      screen: NewReminderScreen,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="ios-add"  
+            name="ios-add-circle"  
             size={24}
             style={{color: tintColor}}
           />
@@ -27,7 +27,7 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="heart"  
+            name="home"  
             size={24}
             style={{color: tintColor}}
           />
@@ -39,7 +39,7 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon 
-            name="home"  
+            name="ios-document"  
             style={{color: tintColor}}
             size={25}
           />
