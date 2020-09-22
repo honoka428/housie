@@ -6,9 +6,10 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import LandingScreen from './src/components/landing';
-import ProfileScreen from './src/components/profile';
 import SettingScreen from './src/components/settings'
 import DashboardNavigator from './src/components/dashboardNav';
+import CalendarScreen from './src/components/calendar';
+import AddMemberScreen from './src/components/addMember';
 
 // Navigation within 'Home'
 const HomeStackNavigator = createStackNavigator(
@@ -23,8 +24,9 @@ const HomeStackNavigator = createStackNavigator(
         headerLeft:(
           <Icon 
             style={styles.drawer}
+            type="Feather"
             name="menu"
-            size={30} 
+            size={70} 
             onPress={() => navigation.openDrawer()}
           />
         ),
@@ -35,10 +37,10 @@ const HomeStackNavigator = createStackNavigator(
   }
 );
 
-// Navigation within 'Profile'
-const ProfileStackNavigator = createStackNavigator(
+// Navigation within 'Calendar'
+const CalendarStackNavigator = createStackNavigator(
   {
-    ProfileScreen
+    CalendarScreen
   },
   {
     defaultNavigationOptions:({ navigation }) => {
@@ -51,11 +53,34 @@ const ProfileStackNavigator = createStackNavigator(
             onPress={() => navigation.openDrawer()}
           />
         ),
-        headerTitle: 'Profile'
+        headerTitle: 'Calendar'
       }
     }
   }
 );
+
+// Navigation within 'Add Member'
+const AddMemberStackNavigator = createStackNavigator(
+  {
+    AddMemberScreen
+  },
+  {
+    defaultNavigationOptions:({ navigation }) => {
+      return {
+        headerLeft:(
+          <Icon 
+            style={styles.drawer}
+            name="menu"
+            size={30} 
+            onPress={() => navigation.openDrawer()}
+          />
+        ),
+        headerTitle: 'Add Family Member'
+      }
+    }
+  }
+);
+
 
 // Navigation within 'Settings'
 const SettingStackNavigator = createStackNavigator(
@@ -82,15 +107,26 @@ const SettingStackNavigator = createStackNavigator(
 // Drawer menu that can be accessed from all app routes
 const AppDrawerNavigator = createDrawerNavigator(
   {
-    Family: { screen: HomeStackNavigator },
-    Profile: { screen: ProfileStackNavigator },
-    Settings: { screen: SettingStackNavigator }
+    Home: { screen: HomeStackNavigator },
+    Calendar: { screen: CalendarStackNavigator },
+    'Add Family Member': { screen: AddMemberStackNavigator },
+    Settings: { screen: SettingStackNavigator },
+    Logout: { screen: LandingScreen }
   },
   {
-    drawerType: 'slide',
+    drawerType: 'front',
     drawerPosition: 'left',
-    drawerWidth: 200,
-    drawerBackgroundColor: 'white',
+    drawerWidth: 250,
+    overlayColor: "transparent",
+    drawerBackgroundColor: '#FFFFFF',
+    contentOptions: {
+      labelStyle: {
+        color: '#FAA465',
+        fontSize: 20,
+        fontWeight: '700',
+        marginTop: 20
+      },
+    }
   }
 );
 
@@ -105,8 +141,8 @@ const AppContainer = createAppContainer(AppSwitchNavigator);
 // Define styles:
 const styles = StyleSheet.create({
   drawer: {
-    paddingLeft: 10,
-    color: '#FFAC4A'
+    paddingLeft: 30,
+    color: '#FAA465'
   },
 });
 

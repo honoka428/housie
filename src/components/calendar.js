@@ -3,12 +3,12 @@ import { StyleSheet, Text } from 'react-native';
 import { Container, Content } from 'native-base';
 
 
-class ProfileScreen extends React.Component {
+class CalendarScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
         <Content>
-          <Text style={styles.text}> Profile Dashboard: </Text>
+          <Text style={styles.text}> Family Calendar</Text>
         </Content>
       </Container>
     )
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen
+export default CalendarScreen

@@ -15,7 +15,8 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
-            name="ios-add-circle"  
+            type="Feather"
+            name="plus-circle"  
             size={24}
             style={{color: tintColor}}
           />
@@ -27,6 +28,7 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
+            type="Feather"
             name="home"  
             size={24}
             style={{color: tintColor}}
@@ -39,7 +41,8 @@ const DashboardNavigator = createBottomTabNavigator(
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon 
-            name="ios-document"  
+            type="Feather"
+            name="clipboard"  
             style={{color: tintColor}}
             size={25}
           />
