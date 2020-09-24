@@ -5,14 +5,17 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
-import LandingScreen from './ios/housie/src/components/landing';
-import SettingScreen from './ios/housie/src/components/settings'
-import DashboardNavigator from './ios/housie/src/components/dashboardNav';
-import CalendarScreen from './ios/housie/src/components/calendar';
-import AddMemberScreen from './ios/housie/src/components/addMember';
+import LandingScreen from './ios/src/components/landing';
+import SettingScreen from './ios/src/components/settings'
+import DashboardNavigator from './ios/src/components/dashboardNav';
+import CalendarScreen from './ios/src/components/calendar';
+import AddMemberScreen from './ios/src/components/addMember';
 
-import { useFonts, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+let customFonts = {
+  'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.ttf')
+};
 
 // Navigation within 'Home'
 const HomeStackNavigator = createStackNavigator(
@@ -125,10 +128,12 @@ const AppDrawerNavigator = createDrawerNavigator(
     contentOptions: {
       labelStyle: {
         color: '#FAA465',
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: '700',
-        marginTop: 20,
-        fontFamily: 'Montserrat_700Bold'
+        paddingTop: 5,
+        paddingLeft: 15,
+        fontFamily: 'Montserrat-Bold',
+        height: 30
       },
     }
   }
@@ -136,7 +141,7 @@ const AppDrawerNavigator = createDrawerNavigator(
 
 // Navigation for before vs. after authentication
 const AppSwitchNavigator = createSwitchNavigator({
-  Landing: { screen: LandingScreen},
+  Landing: { screen: LandingScreen },
   Home: { screen: AppDrawerNavigator}
 });
 
@@ -150,15 +155,27 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function App() {
+class App extends React.Component  {
+    state = {
+      fontsLoaded: false,
+    };
 
-    let [fontsLoaded] = useFonts({
-      Montserrat_700Bold,
-    });
-  
-    if (!fontsLoaded) {
-      return <AppLoading/>;
+    async _loadFontsAsync() {
+      await Font.loadAsync(customFonts);
+      this.setState({ fontsLoaded: true });
     }
 
-    return <AppContainer/>;
+    componentDidMount() {
+      this._loadFontsAsync();
+    }
+
+    render() {
+      if (this.state.fontsLoaded) {
+        return <AppContainer/>;
+        } else {
+          return <AppLoading />;
+        }
+    }
 }
+
+export default App

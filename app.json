@@ -10,7 +10,7 @@
     "version": "1.0.0",
     "orientation": "default",
     "splash": {
-      "image": "./ios/housie/src/assets/images/base/splash.png",
+      "image": "./assets/images/base/splash.png",
       "resizeMode": "cover"
     },
     "updates": {

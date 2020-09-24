@@ -8,7 +8,7 @@ const Parents = ({ navigation }) => {
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={styles.parents}
-          source={require('../assets/images/profiles/parent.png')}
+          source={require('../../../assets/images/profiles/parent.png')}
         />
         <Text style={styles.text}> Parents </Text>
       </TouchableOpacity> 
@@ -22,21 +22,21 @@ const Kids = ({ navigation }) => {
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={styles.child}
-          source={require('../assets/images/profiles/infant.png')}
+          source={require('../../../assets/images/profiles/infant.png')}
         />
         <Text style={styles.text}> Infant </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={styles.child}
-          source={require('../assets/images/profiles/toddler.png')}
+          source={require('../../../assets/images/profiles/toddler.png')}
         />
         <Text style={styles.text}> Toddler </Text>
       </TouchableOpacity>        
       <TouchableOpacity onPress={ () => navigation.navigate('Login')} >
         <Image
           style={styles.child}
-          source={require('../assets/images/profiles/schoolage.png')}
+          source={require('../../../assets/images/profiles/schoolage.png')}
         />
         <Text style={styles.text}> School Age </Text>
       </TouchableOpacity>  
