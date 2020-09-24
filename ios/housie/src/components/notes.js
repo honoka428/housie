@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Container, Content } from 'native-base';
 
 class NoteScreen extends React.Component {
@@ -7,7 +7,9 @@ class NoteScreen extends React.Component {
     return (
       <Container style={styles.container}>
         <Content>
-          <Text style={styles.text}> Notes: </Text>
+          <TouchableOpacity>
+            <Text style={styles.text}> Add Note </Text>
+        </TouchableOpacity>
         </Content>
       </Container>
     )
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',  
     fontSize: 20,
-    fontWeight: '300',
+    fontWeight: '500',
     color: 'black',
   },
 });

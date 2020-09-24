@@ -1,9 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, ImageBackground, View, Image } from 'react-native';
+import { AppLoading } from 'expo';
 
-class LandingScreen extends React.Component {
-  render() {
-    return (
+import { useFonts, Montserrat_700Bold, Montserrat_500Medium, Montserrat_400Regular } from '@expo-google-fonts/montserrat';
+
+export default function LandingScreen() {
+
+  let [fontsLoaded] = useFonts({
+    Montserrat_700Bold,
+    Montserrat_500Medium,
+    Montserrat_400Regular
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading/>;
+  }
+
+  return (
       <ImageBackground source={require("../assets/images/base/landing.png")} resizeMode= 'contain' style={styles.container}>        
         <View style={styles.middle}>
           <Text style={styles.boldTitle}>HOUSIE</Text>
@@ -17,7 +30,6 @@ class LandingScreen extends React.Component {
         </View>
       </ImageBackground>
     )
-  }
 }
 
 const styles = StyleSheet.create({
@@ -40,7 +52,7 @@ const styles = StyleSheet.create({
   },  
   button: {
     fontSize: 20,
-    fontWeight: '500',
+    fontFamily: 'Montserrat_500Medium',
     color: 'white',
     backgroundColor: '#FAA465',
     width: 200,
@@ -53,23 +65,19 @@ const styles = StyleSheet.create({
     marginBottom: 20, 
   },
   boldTitle: {
-    fontFamily: 'Helvetica Neue',
-    fontStyle: 'normal',
-    fontWeight: '700',
+    fontFamily: 'Montserrat_700Bold',
     fontSize: 60,
     lineHeight: 60,
     color: '#FAA465',
   },
   subQuestion: {
-    fontFamily: 'Helvetica Neue',
-    fontStyle: 'normal',
-    fontWeight: '400',
+    fontFamily: 'Montserrat_400Regular',
     fontSize: 15,
     lineHeight: 30,
     color: '#3F3F3F',
   },
   subAnswer: {
-    fontFamily: 'Helvetica Neue',
+    fontFamily: 'Montserrat_500Medium',
     fontStyle: 'normal',
     fontWeight: '700',
     fontSize: 15,
@@ -77,5 +85,3 @@ const styles = StyleSheet.create({
     color: '#FAA465',
   }
 });
-
-export default LandingScreen;

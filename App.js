@@ -4,12 +4,15 @@ import { Icon } from 'native-base';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import { AppLoading } from 'expo';
 
-import LandingScreen from './src/components/landing';
-import SettingScreen from './src/components/settings'
-import DashboardNavigator from './src/components/dashboardNav';
-import CalendarScreen from './src/components/calendar';
-import AddMemberScreen from './src/components/addMember';
+import LandingScreen from './ios/housie/src/components/landing';
+import SettingScreen from './ios/housie/src/components/settings'
+import DashboardNavigator from './ios/housie/src/components/dashboardNav';
+import CalendarScreen from './ios/housie/src/components/calendar';
+import AddMemberScreen from './ios/housie/src/components/addMember';
+
+import { useFonts, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
 
 // Navigation within 'Home'
 const HomeStackNavigator = createStackNavigator(
@@ -124,7 +127,8 @@ const AppDrawerNavigator = createDrawerNavigator(
         color: '#FAA465',
         fontSize: 20,
         fontWeight: '700',
-        marginTop: 20
+        marginTop: 20,
+        fontFamily: 'Montserrat_700Bold'
       },
     }
   }
@@ -146,9 +150,15 @@ const styles = StyleSheet.create({
   },
 });
 
-class App extends React.Component {
-  render() {
+export default function App() {
+
+    let [fontsLoaded] = useFonts({
+      Montserrat_700Bold,
+    });
+  
+    if (!fontsLoaded) {
+      return <AppLoading/>;
+    }
+
     return <AppContainer/>;
-  }
 }
-export default App
