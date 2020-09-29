@@ -3,12 +3,12 @@ import { Icon } from 'native-base';
 
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import HomeScreen from './home';
-import NewReminderScreen from './reminder';
-import NoteScreen from './notes';
+import HomeScreen from '../ios/src/components/home';
+import NewReminderScreen from '../ios/src/components/reminder';
+import NoteScreen from '../ios/src/components/notes';
 
 // Footer tabs navigation config 
-const DashboardNavigator = createBottomTabNavigator(
+const HomeDashboardNavigator = createBottomTabNavigator(
   {
     Reminders: { 
       screen: NewReminderScreen,
@@ -65,4 +65,4 @@ const DashboardNavigator = createBottomTabNavigator(
   },
 );
 
-export default DashboardNavigator
+export default HomeDashboardNavigator

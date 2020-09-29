@@ -29,11 +29,11 @@ class LandingScreen extends React.Component {
           <ImageBackground source={require("../../../assets/images/base/landing.png")} resizeMode= 'contain' style={styles.container}>        
             <View style={styles.middle}>
               <Text style={styles.boldTitle}>HOUSIE</Text>
-              <TouchableOpacity onPress={ () => this.props.navigation.navigate('Home')}>
+              <TouchableOpacity onPress={ () => this.props.navigation.navigate('Login')}>
                 <Text style={styles.button}>Login</Text>
               </TouchableOpacity>
               <Text style={styles.subQuestion}>New here?</Text>
-              <TouchableOpacity onPress={ () => this.props.navigation.navigate('Home')}>
+              <TouchableOpacity onPress={ () => this.props.navigation.navigate('Register')}>
                 <Text style={styles.subAnswer}>Create an account.</Text>
               </TouchableOpacity>
             </View>
