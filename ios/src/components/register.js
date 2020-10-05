@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
-import { Container, Content, Form, Item, Input, Label, ListItem, CheckBox } from 'native-base';
+import { Container, Content, Form, Item, Input, Label } from 'native-base';
 
 let customFonts = {
   'Montserrat-Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Light'
   },
   inputContentWrapper: {
-    marginTop: 70,
+    marginTop: 50,
     marginBottom: 110
   },
   button: {
