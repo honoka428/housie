@@ -70,13 +70,13 @@ class LoginScreen extends React.Component {
                             />
                             <Text style={styles.rememberMeText}>Remember Me</Text>
                           </ListItem>
-                          <TouchableOpacity onPress={ () => this.props.navigation.navigate('Home')}>
+                          <TouchableOpacity onPress={ () => this.props.navigation.navigate('App')}>
                             <Text style={styles.passwordReset}>Forgot password?</Text>
                           </TouchableOpacity>
                         </View>
                         <TouchableOpacity onPress={() => {
                           if (value.checkUser(this.state.username, this.state.password)) {
-                            this.props.navigation.navigate('Home');
+                            this.props.navigation.navigate('App');
                           } else {
                             alert("User does not exist")
                           }

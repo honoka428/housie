@@ -2,8 +2,6 @@ import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
-
-import LandingScreen from './ios/src/components/landing';
 import AppDrawerNavigator from './navigators/AppDrawerNavigator';
 import AuthSwitchNavigator from './navigators/AuthSwitchNavigator';
 
@@ -13,9 +11,8 @@ let customFonts = {
 
 // Navigation for before vs. after authentication
 const RootSwitchNavitagor = createSwitchNavigator({
-  Root: { screen: LandingScreen },
-  Home: { screen: AppDrawerNavigator},
-  Auth: { screen: AuthSwitchNavigator}
+  Auth: { screen: AuthSwitchNavigator },
+  App: { screen: AppDrawerNavigator},
 });
 
 const AppContainer = createAppContainer(RootSwitchNavitagor);
