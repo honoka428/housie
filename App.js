@@ -1,9 +1,5 @@
 import React from 'react';
-// import { StyleSheet } from 'react-native';
-// import { Icon } from 'native-base';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-// import { createStackNavigator } from 'react-navigation-stack';
-// import { createDrawerNavigator } from 'react-navigation-drawer';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
@@ -26,7 +22,7 @@ const AppContainer = createAppContainer(RootSwitchNavitagor);
 
 class App extends React.Component  {
     state = {
-      fontsLoaded: false,
+      fontsLoaded: false
     };
 
     async _loadFontsAsync() {
