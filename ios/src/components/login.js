@@ -5,6 +5,7 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
 import { Container, Content, Form, Item, Input, Label, ListItem, CheckBox } from 'native-base';
+import { AuthContext, AuthProvider } from '../context/AuthContext';
 
 let customFonts = {
     'Montserrat-Bold': require('../../../assets/fonts/Montserrat-Bold.ttf'),
@@ -19,8 +20,8 @@ class LoginScreen extends React.Component {
   };
 
   async _loadFontsAsync() {
-  await Font.loadAsync(customFonts);
-  this.setState({ fontsLoaded: true });
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
   }
 
   componentDidMount() {
@@ -36,43 +37,60 @@ class LoginScreen extends React.Component {
   render() {
     if (this.state.fontsLoaded) {
         return (
-          <Container style={styles.container}>
-              <Content>
-                  <Text style={styles.headerText}> Login </Text>
-                  <View style={styles.inputContentWrapper}>
-                    <Form>
-                        <Item stackedLabel style={styles.formItem}>
-                            <Label style={styles.formLabel}>Username</Label>
-                            <Input style={styles.formInput} />
-                        </Item>
-                        <Item stackedLabel last style={styles.formItem}>
-                            <Label style={styles.formLabel}>Password</Label>
-                            <Input style={styles.formInput}/>
-                        </Item>
-                    </Form>
-                    <ListItem style={styles.rememberMeWrapper}>
-                      <CheckBox
-                        color="#FAA465"
-                        checked={this.state.checked}
-                        onPress={() => this.checkToggleSwitch()}
-                      />
-                      <Text style={styles.rememberMeText}>Remember Me</Text>
-                    </ListItem>
-                    <TouchableOpacity onPress={ () => this.props.navigation.navigate('Home')}>
-                      <Text style={styles.passwordReset}>Forgot password?</Text>
-                    </TouchableOpacity>
-                  </View>
-                  <TouchableOpacity onPress={() => {
-                    this.props.navigation.navigate('Home');
-                    login();
-                  }}>
-                    <Text style={styles.button}>Login</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={ () => this.props.navigation.navigate('Register')}>
-                    <Text style={styles.subAnswer}>Create an Account</Text>
-                  </TouchableOpacity>
-              </Content>
-          </Container>
+          <AuthProvider>
+            <AuthContext.Consumer>
+              { value =>
+                <Container style={styles.container}>
+                    <Content>
+                        <Text style={styles.headerText}> Login </Text>
+                        <View style={styles.inputContentWrapper}>
+                          <Form>
+                              <Item stackedLabel style={styles.formItem}>
+                                  <Label style={styles.formLabel}>Username</Label>
+                                  <Input 
+                                    style={styles.formInput}
+                                    value={this.state.username}
+                                    onChangeText={val => this.setState({ username: val })}
+                                  />
+                              </Item>
+                              <Item stackedLabel last style={styles.formItem}>
+                                  <Label style={styles.formLabel}>Password</Label>
+                                  <Input 
+                                    style={styles.formInput}
+                                    value={this.state.password}
+                                    onChangeText={val => this.setState({ password: val })}
+                                  />
+                              </Item>
+                          </Form>
+                          <ListItem style={styles.rememberMeWrapper}>
+                            <CheckBox
+                              color="#FAA465"
+                              checked={this.state.checked}
+                              onPress={() => this.checkToggleSwitch()}
+                            />
+                            <Text style={styles.rememberMeText}>Remember Me</Text>
+                          </ListItem>
+                          <TouchableOpacity onPress={ () => this.props.navigation.navigate('Home')}>
+                            <Text style={styles.passwordReset}>Forgot password?</Text>
+                          </TouchableOpacity>
+                        </View>
+                        <TouchableOpacity onPress={() => {
+                          if (value.checkUser(this.state.username, this.state.password)) {
+                            this.props.navigation.navigate('Home');
+                          } else {
+                            alert("User does not exist")
+                          }
+                        }}>
+                          <Text style={styles.button}>Login</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={ () => this.props.navigation.navigate('Register')}>
+                          <Text style={styles.subAnswer}>Create an Account</Text>
+                        </TouchableOpacity>
+                    </Content>
+                </Container>
+              }
+            </AuthContext.Consumer>
+          </AuthProvider>
         )
     } else {
         return <AppLoading />;
