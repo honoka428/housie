@@ -45,7 +45,7 @@ class RegisterScreen extends React.Component {
                   <Input style={styles.formInput} />
               </Item>
           </Form>
-          <TouchableOpacity onPress={ () => this.props.navigation.navigate('Home')}>
+          <TouchableOpacity onPress={ () => this.props.navigation.navigate('Onboard')}>
             <Text style={styles.button}>Create Account</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={ () => this.props.navigation.navigate('Login')}>

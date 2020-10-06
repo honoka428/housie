@@ -4,6 +4,7 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import AppDrawerNavigator from './navigators/AppDrawerNavigator';
 import AuthSwitchNavigator from './navigators/AuthSwitchNavigator';
+import OnboardingScreen from './ios/src/components/onboarding';
 
 let customFonts = {
   'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.ttf')
@@ -13,6 +14,7 @@ let customFonts = {
 const RootSwitchNavitagor = createSwitchNavigator({
   Auth: { screen: AuthSwitchNavigator },
   App: { screen: AppDrawerNavigator},
+  Onboard: { screen: OnboardingScreen }
 });
 
 const AppContainer = createAppContainer(RootSwitchNavitagor);
