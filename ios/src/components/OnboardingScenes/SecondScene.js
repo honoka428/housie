@@ -31,7 +31,7 @@ export default class SecondScene extends Component {
           <Text style={styles.title}>How it works</Text>
           <Text style={styles.subtitle}>Keep track of the important things. </Text>
           <Image 
-              source={require('../../../../assets/images/onboarding/secondScene2.png')}
+              source={require('../../../../assets/images/onboarding/secondScene.png')}
               style={{ width: 325, height: 400, alignSelf: 'center', marginTop: 50 }}
               />
         </View>
