@@ -1,61 +1,64 @@
 import React, { Component } from 'react';
-import { Text, View, Animated, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import  Constants from 'expo-constants';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
 
-const { width, height } = Dimensions.get('window');
+let customFonts = {
+  'Montserrat-Bold': require('../../../../assets/fonts/Montserrat-Bold.ttf'),
+  'Montserrat-Medium': require('../../../../assets/fonts/Montserrat-Medium.ttf'),
+  'Montserrat-Light': require('../../../../assets/fonts/Montserrat-Light.ttf')
+};
 
 export default class SecondScene extends Component {
-  render() {
-    
-    let { animatedValue } = this.props
-    , halfWWidth = width / 2
-    , animateInputRange = [ -1 * halfWWidth, 0, halfWWidth ]
-    , paragraphAnimateStyle = [
-      styles.paragraph,
-      {
-        transform: [{
-          translateX: animatedValue.interpolate({
-            inputRange: animateInputRange,
-            outputRange: [ halfWWidth + 10, 0, -1 * halfWWidth - 10 ],
-            extrapolate: 'clamp'
-          })
-        }],
-        opacity: animatedValue.interpolate({
-          inputRange: animateInputRange,
-          outputRange: [0, 1, 0]
-        })
-      }
-    ];
-    
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Second Scene</Text>
-        <Animated.Text style={paragraphAnimateStyle}>
-          Change code in the editor and watch it change on your phone!
-          Save to get a shareable url.
-        </Animated.Text>
-      </View>
-    );
+  state = {
+    fontsLoaded: false,
+    };
+
+    async _loadFontsAsync() {
+        await Font.loadAsync(customFonts);
+        this.setState({ fontsLoaded: true });
+    }
+
+    componentDidMount() {
+    this._loadFontsAsync();
+  }
+
+  render() {  
+    if (this.state.fontsLoaded) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}>How it works</Text>
+          <Text style={styles.subtitle}>Keep track of the important things. </Text>
+          <Image 
+              source={require('../../../../assets/images/onboarding/secondScene2.png')}
+              style={{ width: 325, height: 400, alignSelf: 'center', marginTop: 50 }}
+              />
+        </View>
+      );
+    } else {
+      return <AppLoading/>
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: 'white'
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 35,
+    color: '#FAA465',
+    marginLeft: 30,
+
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'rgba(255,255,255,0.7)'
-  },
+  subtitle: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 20,
+    marginLeft: 30
+  }
 });

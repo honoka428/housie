@@ -15,8 +15,7 @@ _onBoardingCompleted = () => {
   render() {
     let scenes = [
       {
-        component: FirstScene,
-        backgroundColor: '#512DA8',
+        component: FirstScene
       },
       {
         component: SecondScene,
@@ -29,6 +28,7 @@ _onBoardingCompleted = () => {
     scenes={scenes}
     enableBackgroundColorTransition={true}
     onCompleted={this._onBoardingCompleted}
+    activeColor={'#FAA465'}
   />
   )}
 }

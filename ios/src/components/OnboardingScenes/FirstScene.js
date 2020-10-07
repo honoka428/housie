@@ -1,61 +1,62 @@
 import React, { Component } from 'react';
-import { Text, View, Animated, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import  Constants from 'expo-constants';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
-const { width, height } = Dimensions.get('window');
+let customFonts = {
+  'Montserrat-Bold': require('../../../../assets/fonts/Montserrat-Bold.ttf')
+};
 
 export default class FirstScene extends Component {
-  render() {
-    
-    let { animatedValue } = this.props
-    , halfWWidth = width / 2
-    , animateInputRange = [ -1 * halfWWidth, 0, halfWWidth ]
-    , paragraphAnimateStyle = [
-      styles.paragraph,
-      {
-        transform: [{
-          translateX: animatedValue.interpolate({
-            inputRange: animateInputRange,
-            outputRange: [ halfWWidth + 10, 0, -1 * halfWWidth - 10 ],
-            extrapolate: 'clamp'
-          })
-        }],
-        opacity: animatedValue.interpolate({
-          inputRange: animateInputRange,
-          outputRange: [0, 1, 0]
-        })
+    state = {
+      fontsLoaded: false,
+      };
+  
+      async _loadFontsAsync() {
+          await Font.loadAsync(customFonts);
+          this.setState({ fontsLoaded: true });
       }
-    ];
-    
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>First Scene</Text>
-        <Animated.Text style={paragraphAnimateStyle}>
-          Change code in the editor and watch it change on your phone!
-          Save to get a shareable url.
-        </Animated.Text>
-      </View>
-    );
+  
+      componentDidMount() {
+      this._loadFontsAsync();
+    }
+  
+    render() {    
+    if (this.state.fontsLoaded) {
+        return (
+        <View style={styles.container}>
+            <Text style={styles.title}>How it works</Text>
+            <Text style={styles.subtitle}>Add your family members.</Text>
+            <Image 
+              source={require('../../../../assets/images/onboarding/firstScene.png')}
+              style={{ width: 370, height: 470, alignSelf: 'center'}}
+              />
+        </View>
+        );
+    } else {
+        return <AppLoading />;
+    }
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: 'white'
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 35,
+    color: '#FAA465',
+    marginLeft: 30,
+
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'rgba(255,255,255,0.7)',
-  },
+  subtitle: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 20,
+    marginLeft: 30
+  }
 });
