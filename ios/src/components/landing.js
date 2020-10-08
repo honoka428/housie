@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAA465',
     width: 200,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 5,
     textAlign: 'center',
     lineHeight: 50,
     overflow: 'hidden',  
