@@ -9,7 +9,7 @@ import {
 class OnboardingScreen extends React.Component {
 
 _onBoardingCompleted = () => {
-    this.props.navigation.navigate('App')
+    this.props.navigation.navigate('SetUp')
   }
 
   render() {

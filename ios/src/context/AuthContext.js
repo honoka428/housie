@@ -5,13 +5,16 @@ const AuthContext = createContext();
 class AuthProvider extends React.Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        familyName: '',
     }
 
     existingUsers = [{
         username: "Honoka",
         password: "Abc"
     }]
+
+    familyMembers = []
 
     setUsername = (username) => {
         this.setState(username);
@@ -21,14 +24,14 @@ class AuthProvider extends React.Component {
         this.setState(password);
     }
 
-    setEmail = (email) => {
-        this.setState(email);
+    setFamilyName = (familyName) => {
+        this.setState(familyName);
     }
 
-    setToken = (token) => {
-        this.setState(token);
+    addFamilyMember = (familyMember) =>{
+        this.familyMembers.push(familyMember)
     }
-
+    
     checkUser = (username, password) => {
         if (this.existingUsers[0].username == username && this.existingUsers[0].password == password) {
             return true;
@@ -43,13 +46,13 @@ class AuthProvider extends React.Component {
             value={{
                 username: this.state.username,
                 password: this.state.password,
-                email: this.state.password,
-                token: this.state.token,
+                familyName: this.state.familyName,
                 setUsername: this.setUsername,
-                setEmail: this.setEmail,
                 setPassword: this.setPassword,
-                setToken: this.setToken,
-                checkUser: this.checkUser
+                checkUser: this.checkUser,
+                setFamilyName: this.setFamilyName,
+                addFamilyMember: this.addFamilyMember,
+                familyMembers: this.familyMembers
             }}
             >
                 {this.props.children}
