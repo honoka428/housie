@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: '#FAA465',
     height: 50,
-    borderRadius: 25,
+    borderRadius: 5,
     textAlign: 'center',
     lineHeight: 50,
     overflow: 'hidden',  
