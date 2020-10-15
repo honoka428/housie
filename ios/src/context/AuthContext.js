@@ -16,6 +16,8 @@ class AuthProvider extends React.Component {
 
     familyMembers = []
 
+    notes = []
+
     setUsername = (username) => {
         this.setState(username);
     }
@@ -28,8 +30,12 @@ class AuthProvider extends React.Component {
         this.setState(familyName);
     }
 
-    addFamilyMember = (familyMember) =>{
+    addFamilyMember = (familyMember) => {
         this.familyMembers.push(familyMember)
+    }
+
+    addNote = (note) => {
+        this.notes.push(note)
     }
     
     checkUser = (username, password) => {
@@ -52,7 +58,9 @@ class AuthProvider extends React.Component {
                 checkUser: this.checkUser,
                 setFamilyName: this.setFamilyName,
                 addFamilyMember: this.addFamilyMember,
-                familyMembers: this.familyMembers
+                familyMembers: this.familyMembers,
+                notes: this.notes,
+                addNote: this.addNote
             }}
             >
                 {this.props.children}
