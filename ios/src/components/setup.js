@@ -41,7 +41,7 @@ class SetUpScreen extends React.Component {
                                     <Label style={styles.formLabel}>Who's in your family?</Label>
                                     <Input 
                                         style={styles.formInput}
-                                        placeholder={'Type name here...'}
+                                        placeholder={'Type a name here...'}
                                         onChangeText={ (val) => this.setState({ newMember: val })}
                                     />
                                 </Item>
@@ -50,7 +50,7 @@ class SetUpScreen extends React.Component {
                                         value.addFamilyMember({name: newMember, id: Math.random().toString()},
                                         this.setState({ refresh: !refresh })
                                     )}>
-                                    <Text style={styles.button}>Add To Family</Text>
+                                    <Text style={styles.addButton}>Add To Family</Text>
                                 </TouchableOpacity>
                                 <FlatList 
                                     data={value.familyMembers}
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     container: {
         marginLeft: 30,
         marginRight: 35,
-        marginTop: 120
+        marginTop: 150
     },
     inputContentWrapper: {
         marginTop: 70,
@@ -104,6 +104,16 @@ const styles = StyleSheet.create({
     },
     formInput: {
         fontFamily: 'Montserrat-Light'
+    },
+    addButton: {
+        fontSize: 15,
+        fontFamily: 'Montserrat-Medium',
+        color: 'white',
+        backgroundColor: '#FFC194',
+        height: 30,
+        borderRadius: 5,
+        lineHeight: 30,
+        textAlign: 'center'
     },
     button: {
         fontSize: 20,

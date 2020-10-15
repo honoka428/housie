@@ -18,8 +18,7 @@ _onBoardingCompleted = () => {
         component: FirstScene
       },
       {
-        component: SecondScene,
-        backgroundColor: '#388E3C',
+        component: SecondScene
       }
     ];
 
