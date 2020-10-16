@@ -37,27 +37,27 @@ const HomeStackNavigator = createStackNavigator(
     }
   );
   
-// Navigation for Calendarscreen
-const CalendarStackNavigator = createStackNavigator(
-    {
-      CalendarScreen
-    },
-    {
-      defaultNavigationOptions:({ navigation }) => {
-        return {
-          headerLeft:(
-            <Icon 
-              style={styles.drawer}
-              name="menu"
-              size={30} 
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
-          headerTitle: 'Calendar'
-        }
-      }
-    }
-  );
+// // Navigation for Calendarscreen
+// const CalendarStackNavigator = createStackNavigator(
+//     {
+//       CalendarScreen
+//     },
+//     {
+//       defaultNavigationOptions:({ navigation }) => {
+//         return {
+//           headerLeft:(
+//             <Icon 
+//               style={styles.drawer}
+//               name="menu"
+//               size={30} 
+//               onPress={() => navigation.openDrawer()}
+//             />
+//           ),
+//           headerTitle: 'Calendar'
+//         }
+//       }
+//     }
+//   );
   
 // Navigation for AddMemberScreen
 const AddMemberStackNavigator = createStackNavigator(
@@ -108,7 +108,7 @@ const SettingStackNavigator = createStackNavigator(
   const AppDrawerNavigator = createDrawerNavigator(
     {
       Home: { screen: HomeStackNavigator },
-      Calendar: { screen: CalendarStackNavigator },
+      // Calendar: { screen: CalendarStackNavigator },
       'Add Family Member': { screen: AddMemberStackNavigator },
       Settings: { screen: SettingStackNavigator },
       Logout: { screen: LandingScreen }

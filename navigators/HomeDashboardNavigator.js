@@ -4,19 +4,19 @@ import { Icon } from 'native-base';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import HomeScreen from '../ios/src/components/home';
-import NewReminderScreen from '../ios/src/components/reminder';
+import CalendarScreen from '../ios/src/components/calendar';
 import NoteScreen from '../ios/src/components/notes';
 
 // Footer tabs navigation config 
 const HomeDashboardNavigator = createBottomTabNavigator(
   {
-    Reminders: { 
-      screen: NewReminderScreen,
+    Calendar: { 
+      screen: CalendarScreen,
       navigationOptions: () => ({
         tabBarIcon: ({ tintColor }) => (
           <Icon
             type="Feather"
-            name="plus-circle"  
+            name="calendar"  
             size={24}
             style={{color: tintColor}}
           />
