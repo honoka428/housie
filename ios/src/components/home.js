@@ -1,12 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, Input, View, Component, TouchableOpacity, Image } from 'react-native';
-import { Container, Content } from 'native-base';
+import { StyleSheet, Text, View, Component, TouchableOpacity, FlatList } from 'react-native';
+import { Container, Content, Input } from 'native-base';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 
 class HomeScreen extends React.Component {
   // Figure out how dynamically update the content based on user inputs
     // Grabs data from AuthContext.js but values are not updated from previous screen.
-  render() {
+    state = {
+      newReminder: '',
+      refresh: false
+    };
+  
+    render() {
+  
+    const { newReminder, refresh } = this.state;
+  
     return (
         <AuthProvider>
           <AuthContext.Consumer>
@@ -23,7 +31,29 @@ class HomeScreen extends React.Component {
                 </View>
                 <View style={styles.reminders}>
                   <Text style={styles.remindersTitle}> Upcoming To-do's </Text>
-                  <Text style={styles.remindersPlaceholder}> Click on the reminder tab below to add a new to do </Text>
+                  <Content>
+                    <Input 
+                        placeholder={'Add a new reminder ...'}
+                        onChangeText={ (val) => this.setState({ newReminder: val })}
+                    />
+
+                    <TouchableOpacity 
+                      onPress={ () =>
+                        value.addReminder({reminder: newReminder, id: Math.random().toString()},
+                        this.setState({ refresh: !refresh })
+                      )}>
+                      <Text style={styles.addButton}> Set Reminder </Text>
+                    </TouchableOpacity>
+
+                    <FlatList 
+                        data={value.reminders}
+                        renderItem={({ item }) => (
+                          <Text>{item.reminder}</Text>
+                        )}
+                        keyExtractor={item => item.id}
+                        extraData={refresh}
+                    />          
+                    </Content>
                 </View>
               </Container>
             }

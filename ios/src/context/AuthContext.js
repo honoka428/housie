@@ -10,13 +10,16 @@ class AuthProvider extends React.Component {
     }
 
     existingUsers = [{
-        username: "Honoka",
-        password: "Abc"
+        username: "John",
+        password: "Abc",
+        familyName: 'The Doe Family'
     }]
 
     familyMembers = []
 
     notes = []
+
+    reminders = []
 
     setUsername = (username) => {
         this.setState(username);
@@ -26,8 +29,12 @@ class AuthProvider extends React.Component {
         this.setState(password);
     }
 
-    setFamilyName = (familyName) => {
-        this.setState(familyName);
+    setFamilyName = (val) => {
+        // this.existingUsers[0].familyName = val
+        console.log(val)
+        console.log('inside setFamilyName func')
+        this.existingUsers[0].familyName = val
+        console.log(this.existingUsers[0])
     }
 
     addFamilyMember = (familyMember) => {
@@ -37,7 +44,11 @@ class AuthProvider extends React.Component {
     addNote = (note) => {
         this.notes.push(note)
     }
-    
+
+    addReminder = (reminder) => {
+        this.reminders.push(reminder)
+    }
+
     checkUser = (username, password) => {
         if (this.existingUsers[0].username == username && this.existingUsers[0].password == password) {
             return true;
@@ -60,7 +71,10 @@ class AuthProvider extends React.Component {
                 addFamilyMember: this.addFamilyMember,
                 familyMembers: this.familyMembers,
                 notes: this.notes,
-                addNote: this.addNote
+                addNote: this.addNote,
+                existingUsers: this.existingUsers,
+                addReminder: this.addReminder,
+                reminders: this.reminders
             }}
             >
                 {this.props.children}
