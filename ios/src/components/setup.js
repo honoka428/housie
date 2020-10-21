@@ -1,9 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import  Constants from 'expo-constants';
-import { Container, Content, Form, Input, Label, ListItem, CheckBox, Item } from 'native-base';
+import { Container, Form, Input, Label, Item } from 'native-base';
 import { AuthContext, AuthProvider } from '../context/AuthContext';
-import { TextInput } from 'react-native-gesture-handler';
 
 class SetUpScreen extends React.Component {
     state = {
@@ -31,10 +29,11 @@ class SetUpScreen extends React.Component {
                             keyExtractor={item => item.id}
                             extraData={refresh}
                             ListHeaderComponent ={
-                                <>
+                                <>                     
                                 <Text style={styles.subtitle}>Create your</Text>
-                                <Text style={styles.title}>family profile</Text>
-                                <Form style={styles.inputContentWrapper}>                                        
+                                <Text style={styles.title}>family profile</Text>  
+                                <Form style={styles.inputContentWrapper}>
+            
                                     <Item stackedLabel style={styles.formItem}>
                                         <Label style={styles.formLabel}>Family Name</Label>
                                         <Input 
@@ -58,15 +57,15 @@ class SetUpScreen extends React.Component {
                                             value.addFamilyMember({name: newMember, id: Math.random().toString()},
                                             this.setState({ refresh: !refresh })
                                         )}>
-                                        <Text style={styles.addButton}>Add To Family</Text>
+                                        <Text style={styles.addButton}>Add</Text>
                                     </TouchableOpacity>
-                                </Form>
+                                </Form>                                            
                                 </>
                             }
-                            ListFooterComponent = {
+                            ListFooterComponent={
                                 <TouchableOpacity onPress={() => this.props.navigation.navigate('App')}>
                                     <Text style={styles.button}>Save</Text>
-                                </TouchableOpacity>
+                                </TouchableOpacity>                                        
                             }
                         />
                     </Container>
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     },
     inputContentWrapper: {
         marginTop: 70,
-        marginBottom: 150
+        marginBottom: 0
     },
     title: {
         fontFamily: 'Montserrat-Bold',
@@ -102,7 +101,8 @@ const styles = StyleSheet.create({
     },
     formItem: {
         marginTop: 25,
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        marginLeft: 0
     },
     formLabel: {
         color: '#000000',
@@ -117,9 +117,13 @@ const styles = StyleSheet.create({
         color: 'white',
         backgroundColor: '#FFC194',
         height: 30,
+        width: 150,
         borderRadius: 5,
+        overflow: 'hidden',
+        alignSelf: 'flex-start',
         lineHeight: 30,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: 10
     },
     button: {
         fontSize: 20,
@@ -127,12 +131,12 @@ const styles = StyleSheet.create({
         color: 'white',
         backgroundColor: '#FAA465',
         height: 50,
+        width: 350,
         borderRadius: 5,
         textAlign: 'center',
         lineHeight: 50,
         overflow: 'hidden',  
-        marginTop: 0, 
-        marginBottom: 10, 
+        marginTop: 50
       },
 })
 
