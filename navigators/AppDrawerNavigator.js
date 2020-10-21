@@ -6,9 +6,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import HomeDashboardNavigator from './HomeDashboardNavigator';
 
 import LandingScreen from '../ios/src/components/landing';
-import SettingScreen from '../ios/src/components/settings'
-import CalendarScreen from '../ios/src/components/calendar';
-import AddMemberScreen from '../ios/src/components/addMember';
+import SetUpScreen from '../ios/src/components/setup';
 
 
 // Navigation for HomeScreen
@@ -36,81 +34,12 @@ const HomeStackNavigator = createStackNavigator(
       }
     }
   );
-  
-// // Navigation for Calendarscreen
-// const CalendarStackNavigator = createStackNavigator(
-//     {
-//       CalendarScreen
-//     },
-//     {
-//       defaultNavigationOptions:({ navigation }) => {
-//         return {
-//           headerLeft:(
-//             <Icon 
-//               style={styles.drawer}
-//               name="menu"
-//               size={30} 
-//               onPress={() => navigation.openDrawer()}
-//             />
-//           ),
-//           headerTitle: 'Calendar'
-//         }
-//       }
-//     }
-//   );
-  
-// Navigation for AddMemberScreen
-const AddMemberStackNavigator = createStackNavigator(
-    {
-      AddMemberScreen
-    },
-    {
-      defaultNavigationOptions:({ navigation }) => {
-        return {
-          headerLeft:(
-            <Icon 
-              style={styles.drawer}
-              name="menu"
-              size={30} 
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
-          headerTitle: 'Add Family Member'
-        }
-      }
-    }
-  );
-  
-  
-// Navigation for SettingsScreen
-const SettingStackNavigator = createStackNavigator(
-    {
-      SettingScreen
-    },
-    {
-      defaultNavigationOptions:({ navigation }) => {
-        return {
-          headerLeft:(
-            <Icon 
-              style={styles.drawer}
-              name="menu"
-              size={30} 
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
-          headerTitle: 'Settings'
-        }
-      }
-    }
-  );
-  
+
   // Drawer menu that can be accessed from all screens
   const AppDrawerNavigator = createDrawerNavigator(
     {
       Home: { screen: HomeStackNavigator },
-      // Calendar: { screen: CalendarStackNavigator },
-      'Add Family Member': { screen: AddMemberStackNavigator },
-      Settings: { screen: SettingStackNavigator },
+      'Reset Family Settings': { screen: SetUpScreen },
       Logout: { screen: LandingScreen }
     },
     {
