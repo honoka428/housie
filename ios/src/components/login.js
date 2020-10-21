@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// import { Container, Content } from 'native-base';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
@@ -102,7 +101,6 @@ const styles = StyleSheet.create({
   headerText: {
     textAlign: 'center',
     marginTop: 120,
-    // marginBottom: 50,
     fontFamily: 'Montserrat-Bold',
     fontSize: 35,
     fontWeight: '500',
@@ -117,7 +115,9 @@ const styles = StyleSheet.create({
     marginBottom: 150
   },
   formItem: {
-      marginTop: 25
+      marginTop: 25,
+      marginLeft: 0,
+      paddingLeft: 0
   },
   formLabel: {
       color: '#000000',
@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
   },
   rememberMeWrapper: {
     borderBottomWidth: 0,
-    marginTop: 10
+    marginTop: 10,
+    marginLeft: 0
   },
   rememberMeText: {
     paddingLeft: 5,
@@ -136,8 +137,7 @@ const styles = StyleSheet.create({
   },
   passwordReset: {
     fontFamily: 'Montserrat-Bold',
-    color: '#FAA465',
-    marginLeft: 20
+    color: '#FAA465'
   },
   button: {
     fontSize: 20,

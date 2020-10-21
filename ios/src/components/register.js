@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
     marginRight: 35
   },
   formItem: {
-      marginTop: 25
+      marginTop: 25,
+      marginLeft: 0,
+      paddingLeft: 0
   },
   formLabel: {
       color: '#000000',
