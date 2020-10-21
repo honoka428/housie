@@ -7,13 +7,11 @@ import * as ImagePicker from 'expo-image-picker';
 export default function HomeScreen(){
   // Figure out how dynamically update the content based on user inputs
     // Grabs data from AuthContext.js but values are not updated from previous screen.
-    state = {
-      newReminder: '',
-      refresh: false
-    };
 
     const [image1, setImage1] = useState(null);
     const [image2, setImage2] = useState(null);
+    const [newReminder, setReminder] = useState();
+    const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
       (async () => {
@@ -45,8 +43,6 @@ export default function HomeScreen(){
       };
     }  
   
-    const { newReminder, refresh } = this.state;
-  
     return (
         <AuthProvider>
           <AuthContext.Consumer>
@@ -75,13 +71,13 @@ export default function HomeScreen(){
                           <Content>
                             <Input 
                                 placeholder={'Add a new reminder ...'}
-                                onChangeText={ (val) => this.setState({ newReminder: val })}
+                                onChangeText={ (val) => setReminder(val)}
                             />
         
                             <TouchableOpacity 
                               onPress={ () =>
                                 value.addReminder({reminder: newReminder, id: Math.random().toString()},
-                                this.setState({ refresh: !refresh })
+                                setRefresh(!refresh)
                               )}>
                               <Text style={styles.addButton}> Set Reminder </Text>
                             </TouchableOpacity>
