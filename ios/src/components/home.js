@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image, Platform } from 'react-native';
-import { Container, Content, Input } from 'native-base';
+import { Container, Content, Input, Item } from 'native-base';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -69,11 +69,12 @@ export default function HomeScreen(){
                         <View style={styles.reminders}>
                           <Text style={styles.remindersTitle}> Upcoming To-do's </Text>
                           <Content>
-                            <Input 
-                                placeholder={'Add a new reminder ...'}
-                                onChangeText={ (val) => setReminder(val)}
-                            />
-        
+                              <Item style={styles.formItem}>
+                                <Input 
+                                  style={styles.remindersPlaceholder}
+                                  onChangeText={val => setReminder(val)}
+                                />
+                              </Item>
                             <TouchableOpacity 
                               onPress={ () =>
                                 value.addReminder({reminder: newReminder, id: Math.random().toString()},
@@ -97,19 +98,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    alignItems: 'flex-start',
-    marginLeft: 20,
+    alignItems: 'center',
+    marginLeft: 10,
     marginRight: 20,
     marginTop: 30
   },
   familyName: {
     fontFamily: 'Montserrat-Bold',
     fontSize: 35,
-    color: '#FAA465'
+    color: '#FAA465',
   },
   profileThumbnails: {
     flexDirection: 'row',
-    marginTop: 20
+    marginTop: 20,
+    justifyContent: 'center'
   },
   profileThumbnailInactive: {
     backgroundColor: '#ECECEC',
@@ -121,13 +123,25 @@ const styles = StyleSheet.create({
   remindersTitle: {
     color: '#959090',
     fontFamily: 'Montserrat-Bold',
-    marginTop: 20
+    marginTop: 20,
+    alignSelf: 'center'
   },
   remindersPlaceholder: {
     fontFamily: 'Montserrat-Regular',
-
+    alignItems: 'center'
+  },
+  addButton: {
+    fontSize: 15,
+    fontFamily: 'Montserrat-Medium',
+    color: 'white',
+    backgroundColor: '#FFC194',
+    height: 30,
+    width: 150,
+    borderRadius: 5,
+    overflow: 'hidden',
+    alignSelf: 'center',
+    lineHeight: 30,
+    textAlign: 'center',
+    marginTop: 10    
   }
 })
-
-// export default HomeScreen;
-
