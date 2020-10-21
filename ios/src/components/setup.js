@@ -8,7 +8,6 @@ import { TextInput } from 'react-native-gesture-handler';
 class SetUpScreen extends React.Component {
     state = {
         newMember: '',
-        familyName: '',
         refresh: false
     };
 
@@ -26,43 +25,50 @@ class SetUpScreen extends React.Component {
                 <AuthContext.Consumer>
                 { value =>
                     <Container navigation={this.props.navigation} style={styles.container}>
-                        <Content>
-                            <Text style={styles.subtitle}>Create your</Text>
-                            <Text style={styles.title}>family profile</Text>
-                            <Form style={styles.inputContentWrapper}>
-                                <Item stackedLabel style={styles.formItem}>
-                                    <Label style={styles.formLabel}>Family Name</Label>
-                                    <Input 
-                                        style={styles.formInput}
-                                        onChangeText={ (val) => this.setState({ familyName: val })}
-                                    />
-                                </Item>
-                                <Item stackedLabel style={styles.formItem}>
-                                    <Label style={styles.formLabel}>Who's in your family?</Label>
-                                    <Input 
-                                        style={styles.formInput}
-                                        placeholder={'Type a name here...'}
-                                        onChangeText={ (val) => this.setState({ newMember: val })}
-                                    />
-                                </Item>
-                                <TouchableOpacity 
-                                    onPress={ () => 
-                                        value.addFamilyMember({name: newMember, id: Math.random().toString()},
-                                        this.setState({ refresh: !refresh })
-                                    )}>
-                                    <Text style={styles.addButton}>Add To Family</Text>
+                        <FlatList 
+                            data={value.familyMembers}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                            extraData={refresh}
+                            ListHeaderComponent ={
+                                <>
+                                <Text style={styles.subtitle}>Create your</Text>
+                                <Text style={styles.title}>family profile</Text>
+                                <Form style={styles.inputContentWrapper}>                                        
+                                    <Item stackedLabel style={styles.formItem}>
+                                        <Label style={styles.formLabel}>Family Name</Label>
+                                        <Input 
+                                            style={styles.formInput}
+                                            onChangeText={ (val) => 
+                                                value.setFamilyName(val)
+                                                }/>
+                                    </Item>
+                                    <Item stackedLabel style={styles.formItem}>
+                                        <Label style={styles.formLabel}>Who's in your family?</Label>
+                                        <Input 
+                                            style={styles.formInput}
+                                            placeholder={'Type a name here...'}
+                                            onChangeText={ (val) => 
+                                                this.setState({ newMember: val })
+                                            }
+                                        />
+                                    </Item>
+                                    <TouchableOpacity 
+                                        onPress={ () => 
+                                            value.addFamilyMember({name: newMember, id: Math.random().toString()},
+                                            this.setState({ refresh: !refresh })
+                                        )}>
+                                        <Text style={styles.addButton}>Add To Family</Text>
+                                    </TouchableOpacity>
+                                </Form>
+                                </>
+                            }
+                            ListFooterComponent = {
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('App')}>
+                                    <Text style={styles.button}>Save</Text>
                                 </TouchableOpacity>
-                                <FlatList 
-                                    data={value.familyMembers}
-                                    renderItem={renderItem}
-                                    keyExtractor={item => item.id}
-                                    extraData={refresh}
-                                />
-                            </Form>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate('App')}>
-                                <Text style={styles.button}>Save</Text>
-                            </TouchableOpacity>
-                        </Content>
+                            }
+                        />
                     </Container>
                     }
                 </AuthContext.Consumer>

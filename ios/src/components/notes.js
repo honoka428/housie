@@ -18,20 +18,6 @@ class NoteScreen extends React.Component {
         <AuthContext.Consumer>
           { value =>
             <Container style={styles.container}>
-              <Content>
-              <Input 
-                  placeholder={'Type your note here ...'}
-                  onChangeText={ (val) => this.setState({ newNote: val })}
-              />
-
-              <TouchableOpacity 
-                onPress={ () =>
-                  value.addNote({note: newNote, id: Math.random().toString()},
-                  this.setState({ refresh: !refresh })
-                )}>
-                <Text style={styles.addButton}> Add Note </Text>
-              </TouchableOpacity>
-
               <FlatList 
                   data={value.notes}
                   renderItem={({ item }) => (
@@ -39,8 +25,22 @@ class NoteScreen extends React.Component {
                   )}
                   keyExtractor={item => item.id}
                   extraData={refresh}
+                  ListHeaderComponent={
+                    <>
+                      <Input 
+                          placeholder={'Type your note here ...'}
+                          onChangeText={ (val) => this.setState({ newNote: val })}
+                      />
+                      <TouchableOpacity 
+                        onPress={ () =>
+                          value.addNote({note: newNote, id: Math.random().toString()},
+                          this.setState({ refresh: !refresh })
+                        )}>
+                        <Text style={styles.addButton}> Add Note </Text>
+                      </TouchableOpacity>
+                    </>
+                  }
               />          
-              </Content>
             </Container>
           }
           </AuthContext.Consumer>          
