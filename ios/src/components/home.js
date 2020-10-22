@@ -15,11 +15,16 @@ export default function HomeScreen(){
 
     useEffect(() => {
       (async () => {
-        if (Platform.OS !== 'web') {
-          const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
-          if (status !== 'granted') {
-            alert('Sorry, we need camera roll permissions to make this work!');
+        try {
+          if (Platform.OS !== 'web') {
+            const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
+            if (status !== 'granted') {
+              alert('Sorry, we need camera roll permissions to make this work!');
+            }
           }
+        }
+        catch (e) {
+          console.log(e)  
         }
       })();
     }, []);
