@@ -2,7 +2,9 @@
 <p align="center"><img width=20% src="assets/images/base/logo.svg"></p>
 <h1 align="center"> <b> Housie </b> </h>
 
-##### Housie is a simple reminder app for families. Users can create a personalized profile, create reminders, jot down notes, and refer to a calendar. This project was a personal learning activity for React Native so the app uses dummy user data and doesn't store any information. 
+##
+
+Housie is a simple reminder app for families. Users can create a personalized profile, create reminders, jot down notes, and refer to a calendar. This project was a personal learning activity for React Native so the app uses dummy user data and doesn't store any information. 
 
 <br>
 
