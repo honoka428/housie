@@ -65,10 +65,10 @@ export default function HomeScreen(){
                         <Text style={styles.familyName}> { value.existingUsers[0].familyName } </Text>
                         <View style={styles.profileThumbnails}>
                           <TouchableOpacity style={styles.profileThumbnailInactive} onPress={triggerImagePicker(1)}>
-                            {image1 && <Image source={{ uri: image1 }} style={{ width: 110, height: 80 }}/>}
+                            {image1 && <Image source={{ uri: image1 }} style={{ width: 110, height: 80, borderRadius: 10 }}/>}
                           </TouchableOpacity>
                           <TouchableOpacity style={styles.profileThumbnailInactive} onPress={triggerImagePicker(2)}>
-                            {image2 && <Image source={{ uri: image2 }} style={{ width: 110, height: 80 }} />}
+                            {image2 && <Image source={{ uri: image2 }} style={{ width: 110, height: 80, borderRadius: 10 }} />}
                           </TouchableOpacity>
                         </View>
                         <View style={styles.reminders}>
