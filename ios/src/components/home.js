@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image, Platform } from 'react-native';
-import { Container, Form, Input, Item } from 'native-base';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image, Platform, Button } from 'react-native';
+import { Container, Form, Input, Item, Icon } from 'native-base';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 import * as ImagePicker from 'expo-image-picker';
+import DatePicker from 'react-native-datepicker'
+import moment from 'moment';
 
 export default function HomeScreen(){
   // Figure out how dynamically update the content based on user inputs
@@ -48,6 +50,8 @@ export default function HomeScreen(){
       };
     }  
   
+    const [time, setTime] = useState(moment().format('h:mm a'));
+
     return (
         <AuthProvider>
           <AuthContext.Consumer>
@@ -56,7 +60,10 @@ export default function HomeScreen(){
                   <FlatList 
                       data={value.reminders}
                       renderItem={({ item }) => (
-                        <Text>{item.reminder}</Text>
+                        <View style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
+                          <Text><Icon type="Feather" name="sun" style={{fontSize: 15, color: '#FAA465'}}/>  {item.time}  -  </Text>
+                          <Text>{item.reminder}</Text>
+                        </View>
                       )}
                       keyExtractor={item => item.id}
                       extraData={refresh}
@@ -75,16 +82,35 @@ export default function HomeScreen(){
                           <Text style={styles.remindersTitle}> Upcoming To-do's </Text>
                           <Form>
                               <Item>
+                              <DatePicker
+                                style={{width: 300}}
+                                date={time}
+                                mode="time"
+                                format="h:mm a"
+                                confirmBtnText="Confirm"
+                                cancelBtnText="Cancel"
+                                customStyles={{
+                                  dateIcon: {
+                                    display: 'none'
+                                  },
+                                  dateInput: {
+                                    borderColor: 'transparent'
+                                  }
+                                }}
+                                onDateChange={(date) => {setTime(date.toString())}}
+                              />
+                              </Item>                            
+                              <Item>
                                 <Input 
                                   style={styles.remindersPlaceholder}
                                   onChangeText={val => setReminder(val)}
                                 />
                               </Item>
-                            </Form>
+                          </Form>
                             <TouchableOpacity 
                               onPress={ () =>
-                                value.addReminder({reminder: newReminder, id: Math.random().toString()},
-                                setRefresh(!refresh)
+                                value.addReminder({reminder: newReminder, id: Math.random().toString(), time: time},
+                                setRefresh(!refresh),
                               )}>
                               <Text style={styles.addButton}> Set Reminder </Text>
                             </TouchableOpacity>
