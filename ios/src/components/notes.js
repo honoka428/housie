@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
-import { Container, Form, Input, Item } from 'native-base';
+import { Container, Form, Input, Item, Icon } from 'native-base';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 
 class NoteScreen extends React.Component {
@@ -22,7 +22,9 @@ class NoteScreen extends React.Component {
               <FlatList 
                   data={value.notes}
                   renderItem={({ item }) => (
-                    <Text>{item.note}</Text>
+                    <Text style={{marginTop: 20}}> 
+                      <Icon type="Feather" name="target" style={{fontSize: 15, color: '#FAA465'}}/>  {item.note}
+                    </Text>
                   )}
                   keyExtractor={item => item.id}
                   extraData={refresh}

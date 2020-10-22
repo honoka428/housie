@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { Container, Form, Input, Label, Item } from 'native-base';
+import { Container, Form, Input, Label, Item, Icon } from 'native-base';
 import { AuthContext, AuthProvider } from '../context/AuthContext';
 
 class SetUpScreen extends React.Component {
@@ -13,8 +13,9 @@ class SetUpScreen extends React.Component {
         const { newMember, refresh } = this.state;
 
         const renderItem = ({ item }) => (
-            <View style={styles.item}>
-                <Text style={styles.name}>{item.name}</Text>
+            <View style={{display: 'flex', flexDirection: 'row', marginTop: 20}}>
+                <Icon type="Feather" name="target" style={{fontSize: 15, color: '#FAA465'}}/>
+                <Text style={styles.name}>  {item.name}</Text>
             </View>
         )
 
