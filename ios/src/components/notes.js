@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
-import { Container, Content, Input } from 'native-base';
+import { Container, Form, Input, Item } from 'native-base';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 
 class NoteScreen extends React.Component {
@@ -13,6 +13,7 @@ class NoteScreen extends React.Component {
 
     const { newNote, refresh } = this.state;
 
+    
     return (
       <AuthProvider>
         <AuthContext.Consumer>
@@ -26,11 +27,15 @@ class NoteScreen extends React.Component {
                   keyExtractor={item => item.id}
                   extraData={refresh}
                   ListHeaderComponent={
-                    <>
-                      <Input 
-                          placeholder={'Type your note here ...'}
-                          onChangeText={ (val) => this.setState({ newNote: val })}
-                      />
+                    <View>
+                      <Text style={styles.remindersTitle}> Use this page to jot down your thoughts! </Text>
+                      <Form>
+                        <Item>
+                          <Input 
+                            style={styles.remindersPlaceholder}
+                            onChangeText={ (val) => this.setState({ newNote: val })}                            />
+                        </Item>
+                      </Form>                    
                       <TouchableOpacity 
                         onPress={ () =>
                           value.addNote({note: newNote, id: Math.random().toString()},
@@ -38,7 +43,7 @@ class NoteScreen extends React.Component {
                         )}>
                         <Text style={styles.addButton}> Add Note </Text>
                       </TouchableOpacity>
-                    </>
+                    </View>
                   }
               />          
             </Container>
@@ -54,7 +59,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',    
+    marginLeft: 10,
+    marginRight: 20,
+    marginTop: 30    
+  },
+  remindersTitle: {
+    color: '#959090',
+    fontFamily: 'Montserrat-Bold',
+    marginTop: 20,
+    alignSelf: 'center'
+  },
+  remindersPlaceholder: {
+    fontFamily: 'Montserrat-Regular',
+    alignItems: 'center'
   },
   addButton: {
     fontSize: 15,
@@ -62,9 +79,13 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: '#FFC194',
     height: 30,
+    width: 150,
     borderRadius: 5,
+    overflow: 'hidden',
+    alignSelf: 'center',
     lineHeight: 30,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 10    
 },
 });
 
