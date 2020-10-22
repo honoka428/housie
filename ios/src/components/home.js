@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image, Platform } from 'react-native';
-import { Container, Content, Input, Item } from 'native-base';
+import { Container, Form, Input, Item } from 'native-base';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -68,13 +68,14 @@ export default function HomeScreen(){
                         </View>
                         <View style={styles.reminders}>
                           <Text style={styles.remindersTitle}> Upcoming To-do's </Text>
-                          <Content>
+                          <Form>
                               <Item style={styles.formItem}>
                                 <Input 
                                   style={styles.remindersPlaceholder}
                                   onChangeText={val => setReminder(val)}
                                 />
                               </Item>
+                            </Form>
                             <TouchableOpacity 
                               onPress={ () =>
                                 value.addReminder({reminder: newReminder, id: Math.random().toString()},
@@ -82,7 +83,6 @@ export default function HomeScreen(){
                               )}>
                               <Text style={styles.addButton}> Set Reminder </Text>
                             </TouchableOpacity>
-                          </Content>
                         </View>
                         </>                          
                       }
