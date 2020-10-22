@@ -1,14 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { Container, Content } from 'native-base';
+import { StyleSheet } from 'react-native';
+import { Container } from 'native-base';
+import {CalendarList} from 'react-native-calendars';
 
 class CalendarScreen extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Content>
-          <Text style={styles.text}> My Calendar: </Text>
-        </Content>
+      <CalendarList
+        pastScrollRange={4}
+        futureScrollRange={4}
+        scrollEnabled={true}
+        showScrollIndicator={true}
+        theme={{
+          textSectionTitleDisabledColor: '#d9e1e8',
+          todayTextColor: '#FAA465',
+          monthTextColor: '#FAA465',
+          textDayFontFamily: 'Montserrat-Regular',
+          textMonthFontFamily: 'Montserrat-Bold',
+          textDayHeaderFontFamily: 'Montserrat-Regular',
+          textDayFontWeight: '300',
+          textDayHeaderFontWeight: '300',
+          textDayFontSize: 16,
+          textMonthFontSize: 20,
+          textDayHeaderFontSize: 12
+        }}
+      />
       </Container>
     )
   }
