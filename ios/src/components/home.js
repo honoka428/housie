@@ -71,10 +71,10 @@ export default function HomeScreen(){
                             {image2 && <Image source={{ uri: image2 }} style={{ width: 110, height: 80, borderRadius: 10 }} />}
                           </TouchableOpacity>
                         </View>
-                        <View style={styles.reminders}>
+                        <View>
                           <Text style={styles.remindersTitle}> Upcoming To-do's </Text>
                           <Form>
-                              <Item style={styles.formItem}>
+                              <Item>
                                 <Input 
                                   style={styles.remindersPlaceholder}
                                   onChangeText={val => setReminder(val)}
