@@ -4,15 +4,15 @@
 
 ##
 
-Housie is a simple reminder app for families. Users can create a personalized profile, create reminders, jot down notes, and refer to a calendar. This project was a personal learning activity for React Native so the app uses dummy user data and doesn't store any information. 
+Housie is a simple reminder app for families. Users can create a personalized profile, create reminders, jot down notes, and refer to a calendar. A personal project to learn React Native with dummy user data (no authentication). 
 
 <br>
 
 ### <b> App Overview </b>
 <p float="left">
-  <img src="./assets/images/readme/landingScreen.png" width="250" />
-  <img src="./assets/images/readme/loginScreen.png" width="250" /> 
-  <img src="./assets/images/readme/homeScreen.png" width="250" />
+  <img src="./assets/images/readme/landingScreen.png" width="260"/>
+  <img src="./assets/images/readme/loginScreen.png" width="260" /> 
+  <img src="./assets/images/readme/homeScreen.png" width="260" />
 </p>
 
 <br> 
